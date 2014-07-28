@@ -34,7 +34,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/sony/montblanc-common/prebuilt/resources-480x854.mk)
 
 # Inherit from kumquat device
-$(call inherit-product, device/sony/kumquat/kumquat.mk)
+$(call inherit-product, device/sony/kumquat/device_kumquat.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := full_kumquat
