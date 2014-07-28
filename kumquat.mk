@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit from full_kumquat
+$(call inherit-product, device/sony/nypon/full_kumquat.mk)
+
 # Inherit the proprietary counterpart
 $(call inherit-product-if-exists, vendor/sony/kumquat/kumquat-vendor.mk)
 
