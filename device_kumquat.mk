@@ -14,8 +14,23 @@
 # limitations under the License.
 #
 
-# Inherit from full_kumquat
-$(call inherit-product, device/sony/nypon/full_kumquat.mk)
+# Torch
+PRODUCT_PACKAGES := \
+ Torch
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+
+#charging animation
+$(call inherit-product, device/sony/montblanc-common/prebuilt/resources-480x854.mk)
+
+# Set those variables here to overwrite the inherited values.
+PRODUCT_NAME := kumquat
+PRODUCT_DEVICE := kumquat
+PRODUCT_BRAND := Sony
+PRODUCT_MANUFACTURER := Sony
+PRODUCT_MODEL := Xperia U
 
 # Inherit the proprietary counterpart
 $(call inherit-product-if-exists, vendor/sony/kumquat/kumquat-vendor.mk)
