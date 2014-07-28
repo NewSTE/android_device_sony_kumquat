@@ -1,6 +1,21 @@
 # HW configuration file for kumquat
 # Touch FW loader
-cyttsp_fwloader -dev /sys/bus/spi/devices/spi9.0 -fw /etc/firmware/ttsp_fw.hex
+dev=/sys/bus/spi/devices/spi9.0
+fw=ttsp_fw.hex
+app_id=`cat  $dev/appid`
+case `cat /data/ttsp_fw_update` in
+        "in_progress") flags=-force ;;
+        *) flags="" ;;
+esac
+case "$app_id" in
+	"0x3030") flags=-force ;;
+	*) echo $app_id > /data/ttsp_appid ;;
+esac
+
+echo "in_progress" > /data/ttsp_fw_update
+cyttsp_fwloader -dev $dev -fw /system/etc/firmware/$fw $flags
+echo "done" > /data/ttsp_fw_update
+
 
 # Audio jack configuration
 dev=/sys/devices/platform/simple_remote.0
@@ -20,17 +35,5 @@ val_filter=0
 echo $val_cycle > $dev/cycle    # Duration Cycle. Valid range is 0 - 3.
 echo $val_nburst > $dev/nburst  # Numb er of pulses in burst. Valid range is 0 - 15.
 echo $val_freq > $dev/freq      # Burst frequency. Valid range is 0 - 3.
-
-if `ls /data/etc/threshold > /dev/null`; then
-    cat /data/etc/threshold > $dev/threshold # Use value from calibration
-    rm /data/etc/threshold # Remove temp file
-else # No value from calibration, use default value
-    echo $val_threshold > $dev/threshold # sensor threshold. Valid range is 0 - 15 (0.12V - 0.87V)
-fi
-
-if `ls /data/etc/filter > /dev/null`; then
-    cat /data/etc/filter > $dev/filter # Use value from calibration
-    rm /data/etc/filter # Remove temp file
-else # No value from calibration, use default value
-    echo $val_filter > $dev/filter  # RFilter. Valid range is 0 - 3.
-fi
+echo $val_threshold > $dev/threshold # sensor threshold. Valid range is 0 - 15 (0.12V - 0.87V)
+echo $val_filter > $dev/filter  # RFilter. Valid range is 0 - 3.
