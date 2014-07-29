@@ -1,0 +1,25 @@
+import /init.st-ericsson.rc
+
+# init.kumquat.rc
+on init
+    # setup the global environment
+    export EXTERNAL_STORAGE_ALL /mnt/sdcard:/mnt/usbdisk
+    export EXTERNAL_STORAGE_USB /mnt/usbdisk
+
+    # create mountpoint
+    mkdir /mnt/usbdisk 0000 system system
+
+    # create symlink
+    symlink /mnt/usbdisk /usbdisk
+
+    # chown for sim detect
+    chown root radio /sys/class/sim_card/sim_status
+
+service illumination /system/bin/illumination_service
+    user root
+
+service touchd /system/bin/touchd
+    user root
+
+service semcwall /system/bin/semcwall
+    user root
