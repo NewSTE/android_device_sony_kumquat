@@ -14,10 +14,6 @@
 # limitations under the License.
 #
 
-#charging animation
-$(call inherit-product, device/sony/montblanc-common/prebuilt/resources-480x854.mk)
-
-
 # Inherit the proprietary counterpart
 $(call inherit-product-if-exists, vendor/sony/kumquat/kumquat-vendor.mk)
 
