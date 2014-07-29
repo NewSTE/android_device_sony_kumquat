@@ -14,19 +14,9 @@
 # limitations under the License.
 #
 
-# Torch
-PRODUCT_PACKAGES := \
- Torch
-
 #charging animation
 $(call inherit-product, device/sony/montblanc-common/prebuilt/resources-480x854.mk)
 
-# Set those variables here to overwrite the inherited values.
-PRODUCT_NAME := kumquat
-PRODUCT_DEVICE := kumquat
-PRODUCT_BRAND := Sony
-PRODUCT_MANUFACTURER := Sony
-PRODUCT_MODEL := Xperia U
 
 # Inherit the proprietary counterpart
 $(call inherit-product-if-exists, vendor/sony/kumquat/kumquat-vendor.mk)
