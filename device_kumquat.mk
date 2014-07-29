@@ -73,6 +73,10 @@ PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/recovery/bootrec-device-fs:root/sbin/bootrec-device-fs \
    $(LOCAL_PATH)/recovery.fstab:root/recovery.fstab
 
+#RamDisk
+PRODUCT_COPY_FILES += \
+   $(LOCAL_PATH)/config/init.kumquat.rc:root/init.kumquat.rc \
+   
 # Key layouts and touchscreen
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/config/AB8500_Hs_Button.kl:system/usr/keylayout/AB8500_Hs_Button.kl \
