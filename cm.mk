@@ -11,7 +11,7 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 # Inherit CM common Phone stuff.
 $(call inherit-product, vendor/cm/products/common_full.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=ST25i_1261-7885 BUILD_FINGERPRINT=SEMC/ST25i_1261-7885/ST25i:2.3.7/6.0.B.3.184/R7P_zw:user/release-keys PRIVATE_BUILD_DESC="ST25i-user 2.3.7 6.0.B.3.184 R7P_zw test-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=ST25i_1262-1120 BUILD_FINGERPRINT=SEMC/ST25i_1262-1120/ST25i:4.0.4/6.1.1.B.1.10/9bt3zw:user/release-keys PRIVATE_BUILD_DESC="ST25i-user 4.0.4 6.1.1.B.1.10 9bt3zw test-keys"
 PRODUCT_NAME := cyanogen_kumquat
 PRODUCT_DEVICE := kumquat
 
